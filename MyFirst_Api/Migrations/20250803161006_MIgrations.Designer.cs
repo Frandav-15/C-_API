@@ -11,8 +11,8 @@ using MyFirst_Api.Data;
 namespace MyFirst_Api.Migrations
 {
     [DbContext(typeof(MyAppContext))]
-    [Migration("20250803151531_Migrations")]
-    partial class Migrations
+    [Migration("20250803161006_MIgrations")]
+    partial class MIgrations
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -49,6 +49,25 @@ namespace MyFirst_Api.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("employeds");
+                });
+
+            modelBuilder.Entity("MyFirst_Api.Models.Product", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<string>("Description")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<decimal>("Price")
+                        .HasColumnType("decimal(18,2)");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("products");
                 });
 #pragma warning restore 612, 618
         }

@@ -5,7 +5,7 @@
 namespace MyFirst_Api.Migrations
 {
     /// <inheritdoc />
-    public partial class Migrations : Migration
+    public partial class MIgrations : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
@@ -25,6 +25,20 @@ namespace MyFirst_Api.Migrations
                 {
                     table.PrimaryKey("PK_employeds", x => x.Id);
                 });
+
+            migrationBuilder.CreateTable(
+                name: "products",
+                columns: table => new
+                {
+                    Id = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    Description = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    Price = table.Column<decimal>(type: "decimal(18,2)", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_products", x => x.Id);
+                });
         }
 
         /// <inheritdoc />
@@ -32,6 +46,9 @@ namespace MyFirst_Api.Migrations
         {
             migrationBuilder.DropTable(
                 name: "employeds");
+
+            migrationBuilder.DropTable(
+                name: "products");
         }
     }
 }

@@ -47,6 +47,25 @@ namespace MyFirst_Api.Migrations
 
                     b.ToTable("employeds");
                 });
+
+            modelBuilder.Entity("MyFirst_Api.Models.Product", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<string>("Description")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<decimal>("Price")
+                        .HasColumnType("decimal(18,2)");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("products");
+                });
 #pragma warning restore 612, 618
         }
     }
